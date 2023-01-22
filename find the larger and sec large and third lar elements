@@ -1,0 +1,40 @@
+#include<stdio.h>
+int lar(int n,int a[])
+{
+    int l1=a[0],l2=0,l3=0,i=0;
+    for(i=0;i<n;i++)
+    {
+        if(a[i]>l1)
+        {
+            l3=l2;
+            l2=l1;
+            l1=a[i];
+        }
+        else if(a[i]>l2 &&a[i]<l1)
+        {
+            l3=l2;
+            l2=a[i];
+        }
+        if(a[i]>l3 &&a[i]<l2)
+        {
+            
+            l3=a[i];
+        }
+    }
+    printf("the largest number:%d\n",l1);
+    printf("the second largest number:%d\n",l2);
+    printf("the thrid largest number:%d\n",l3);
+}
+int main()
+{
+    int n,a[5];
+    printf("enter the size of array:");
+    scanf("%d",&n);
+    printf("enter the elements:");
+    for(int i=0;i<n;i++)
+    {
+    scanf("%d",&a[i]);
+    }
+    int (*fptr)(int ,int [])=lar;
+    fptr(n,a);
+}
